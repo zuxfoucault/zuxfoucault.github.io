@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fu-Te Wong — ML Researcher</title>
+    <meta
+      name="description"
+      content="Fu-Te Wong — Researcher at the Vector Institute for Artificial Intelligence and Ph.D. candidate at the University of Toronto. LLM agent frameworks, Machine learning (quantum-integrated),  and computational neuroscience."
+    />
+    <meta property="og:title" content="Fu-Te Wong — ML Researcher" />
+    <meta
+      property="og:description"
+      content="Researcher at the Vector Institute · Ph.D. candidate, University of Toronto. LLM agent frameworks, Machine learning (quantum-integrated),  and computational neuroscience."
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>"
+    />
+    <style>
+      :root {
+        --bg: #fdfdfb;
+        --bg-alt: #f4f4ef;
+        --text: #1c1e21;
+        --text-soft: #55595f;
+        --accent: #0f62a8;
+        --accent-soft: #e3eef7;
+        --border: #e2e2dc;
+        --card: #ffffff;
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      }
+      :root[data-theme="dark"] {
+        --bg: #14161a;
+        --bg-alt: #1b1e24;
+        --text: #e8eaed;
+        --text-soft: #a5aab3;
+        --accent: #6db3e8;
+        --accent-soft: #1e2f3f;
+        --border: #2a2e36;
+        --card: #1b1e24;
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #14161a;
+          --bg-alt: #1b1e24;
+          --text: #e8eaed;
+          --text-soft: #a5aab3;
+          --accent: #6db3e8;
+          --accent-soft: #1e2f3f;
+          --border: #2a2e36;
+          --card: #1b1e24;
+          --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 70px;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+        font-size: 16.5px;
+        transition:
+          background 0.25s,
+          color 0.25s;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* ── Nav ─────────────────────────── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0.7rem 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 1.1rem;
+        flex-wrap: wrap;
+      }
+      .nav-name {
+        font-weight: 700;
+        margin-right: auto;
+        color: var(--text);
+      }
+      nav a.nav-link {
+        color: var(--text-soft);
+        font-size: 0.92rem;
+      }
+      nav a.nav-link:hover {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      #theme-toggle {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0.25rem 0.55rem;
+        cursor: pointer;
+        font-size: 0.95rem;
+        color: var(--text);
+        line-height: 1;
+      }
+
+      /* ── Layout ──────────────────────── */
+      main {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 1.25rem 4rem;
+      }
+      section {
+        padding-top: 3rem;
+      }
+      h2 {
+        font-size: 1.35rem;
+        margin-bottom: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      h2::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      /* ── Hero ────────────────────────── */
+      header.hero {
+        padding: 4.5rem 0 1rem;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+      .hero .role {
+        font-size: 1.15rem;
+        color: var(--text-soft);
+        margin-top: 0.5rem;
+      }
+      .hero .role strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .hero p.summary {
+        margin-top: 1.2rem;
+        max-width: 44rem;
+        color: var(--text-soft);
+      }
+      .hero .links {
+        margin-top: 1.4rem;
+        display: flex;
+        gap: 0.7rem;
+        flex-wrap: wrap;
+      }
+      .hero .links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.38rem 0.95rem;
+        font-size: 0.92rem;
+        color: var(--text);
+        background: var(--card);
+        box-shadow: var(--shadow);
+      }
+      .hero .links a:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      /* ── Interests chips ─────────────── */
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.3rem;
+      }
+      .chips span {
+        background: var(--accent-soft);
+        color: var(--accent);
+        border-radius: 6px;
+        padding: 0.18rem 0.65rem;
+        font-size: 0.84rem;
+        font-weight: 500;
+      }
+
+      /* ── Publications ────────────────── */
+      .pub {
+        padding: 0.85rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .pub:last-child {
+        border-bottom: none;
+      }
+      .pub .title {
+        font-weight: 600;
+      }
+      .pub .meta {
+        color: var(--text-soft);
+        font-size: 0.92rem;
+        margin-top: 0.15rem;
+      }
+      .pub .meta .me {
+        color: var(--text);
+        font-weight: 500;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 0.74rem;
+        font-weight: 600;
+        border-radius: 5px;
+        padding: 0.06rem 0.5rem;
+        margin-left: 0.45rem;
+        vertical-align: 2px;
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      /* ── Experience timeline ─────────── */
+      .job {
+        display: grid;
+        grid-template-columns: 9.5rem 1fr;
+        gap: 1.4rem;
+        padding: 1.05rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .job:last-child {
+        border-bottom: none;
+      }
+      .job .when {
+        color: var(--text-soft);
+        font-size: 0.9rem;
+        padding-top: 0.15rem;
+        white-space: nowrap;
+      }
+      .job h3 {
+        font-size: 1.05rem;
+        font-weight: 650;
+      }
+      .job .org {
+        color: var(--text-soft);
+        font-size: 0.95rem;
+        font-style: italic;
+        margin-bottom: 0.35rem;
+      }
+      .job ul {
+        margin: 0.3rem 0 0 1.1rem;
+        color: var(--text-soft);
+        font-size: 0.95rem;
+      }
+      .job ul li {
+        margin-bottom: 0.3rem;
+      }
+      @media (max-width: 640px) {
+        .job {
+          grid-template-columns: 1fr;
+          gap: 0.15rem;
+        }
+        .hero h1 {
+          font-size: 2rem;
+        }
+      }
+
+      /* ── Skills ──────────────────────── */
+      .skills {
+        display: grid;
+        gap: 0.9rem;
+      }
+      .skill-row {
+        display: grid;
+        grid-template-columns: 9.5rem 1fr;
+        gap: 1.4rem;
+        align-items: baseline;
+      }
+      .skill-row .cat {
+        font-weight: 650;
+        font-size: 0.92rem;
+      }
+      .skill-row .items {
+        color: var(--text-soft);
+        font-size: 0.95rem;
+      }
+      @media (max-width: 640px) {
+        .skill-row {
+          grid-template-columns: 1fr;
+          gap: 0.1rem;
+        }
+      }
+
+      /* ── Education / Awards cards ────── */
+      .card-list {
+        display: grid;
+        gap: 0.8rem;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 0.9rem 1.15rem;
+        box-shadow: var(--shadow);
+      }
+      .card .top {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        font-weight: 600;
+      }
+      .card .top .when {
+        color: var(--text-soft);
+        font-weight: 400;
+        font-size: 0.9rem;
+      }
+      .card .sub {
+        color: var(--text-soft);
+        font-size: 0.93rem;
+      }
+
+      /* ── Footer ──────────────────────── */
+      footer {
+        border-top: 1px solid var(--border);
+        margin-top: 4rem;
+        padding: 2rem 1.25rem;
+        text-align: center;
+        color: var(--text-soft);
+        font-size: 0.88rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-inner">
+        <span class="nav-name">Fu-Te Wong</span>
+        <a class="nav-link" href="#publications">Publications</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#education">Education</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#awards">Awards</a>
+        <button
+          id="theme-toggle"
+          title="Toggle dark / light theme"
+          aria-label="Toggle theme"
+        >
+          ◐
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero">
+        <h1>Fu-Te Wong</h1>
+        <p class="role">
+          Researcher,
+          <strong>Vector Institute for Artificial Intelligence</strong> · Ph.D.
+          Candidate, <strong>University of Toronto</strong>
+        </p>
+        <p class="summary">
+          AI/ML engineer and researcher specialising in multi-agent LLM systems
+          (alignment and interpretability), quantum-integrated ML, and deep RL.
+          PhD candidate at University of Toronto (Vector Institute affiliate).
+          Shipped end-to-end ML pipelines on cloud infra; experienced in cluster
+          orchestration, MLOps, and infrastructure. Proven track record
+          delivering AI research, building end-to-end ML pipelines. My
+          background spans deep learning, computational neuroscience, and
+          clinical psychology — from CNN-based clinical prediction models to
+          agentic frameworks for algorithmic search.
+        </p>
+        <div class="links">
+          <a href="mailto:zuxfoucault@gmail.com">✉️ zuxfoucault@gmail.com</a>
+          <a
+            href="https://github.com/zuxfoucault"
+            target="_blank"
+            rel="noopener"
+            >🐙 github.com/zuxfoucault</a
+          >
+          <a href="#">📍 Toronto, Canada</a>
+        </div>
+        <div class="chips">
+          <span>Quantum Machine Learning</span>
+          <span>LLM Agent Frameworks</span>
+          <span>Multi-agent RL</span>
+          <span>Multi-hop Reasoning</span>
+          <span>Computational Neuroscience</span>
+          <span>Integrated Information Theory</span>
+        </div>
+      </header>
+
+      <section id="publications">
+        <h2>Selected Publications</h2>
+
+        <div class="pub">
+          <div class="title">
+            Toward Fully Unitary Quantum Backpropagation
+            <span class="tag">Under review</span>
+          </div>
+          <div class="meta"><span class="me">Wong, F.-T.</span> (2026)</div>
+        </div>
+
+        <div class="pub">
+          <div class="title">
+            Multi-Token Prediction and Alternative Tokenization Improve
+            Multi-Hop Reasoning and Graph Search
+            <span class="tag">Under review</span>
+          </div>
+          <div class="meta">
+            Frydenlund, A., <span class="me">Wong, F.-T.</span>, et al. (2026)
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="title">
+            Automated Algorithm Search for Quantum Machine Learning
+          </div>
+          <div class="meta">
+            <span class="me">Wong, F.-T.</span> (2025) ·
+            <a
+              href="https://doi.org/10.13140/RG.2.2.24543.73125"
+              target="_blank"
+              rel="noopener"
+              >DOI: RG.2.2.24543.73125</a
+            >
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="title">
+            Advanced For-Loop for QML Algorithm Search
+            <span class="tag">QTML 2025</span>
+          </div>
+          <div class="meta">
+            <span class="me">Wong, F.-T.</span> (2025) ·
+            <a
+              href="https://arxiv.org/abs/2506.18260"
+              target="_blank"
+              rel="noopener"
+              >arXiv:2506.18260</a
+            >
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="title">
+            The Generative Quantum Eigensolver (GQE) and Its Application for
+            Ground State Search
+          </div>
+          <div class="meta">
+            Nakaji, K., …, <span class="me">Wong, F.-T.</span>, et al. (2024) ·
+            <a
+              href="https://arxiv.org/abs/2401.09253"
+              target="_blank"
+              rel="noopener"
+              >arXiv:2401.09253</a
+            >
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="title">
+            Deep Learning–Based Prediction of Suicidality from Structural MRI
+            (CNN Suicidality Prediction)
+          </div>
+          <div class="meta">
+            Chen, V.C.-H., <span class="me">Wong, F.-T.</span>, et al. (2021) ·
+            <em>Journal of Clinical Psychiatry</em>, 82(2)
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+
+        <div class="job">
+          <div class="when">2024 – Present</div>
+          <div>
+            <h3>Researcher</h3>
+            <div class="org">
+              Vector Institute for Artificial Intelligence, Toronto
+            </div>
+            <ul>
+              <li>
+                Built a multi-agent LLM/RL pipeline for automated QML algorithm
+                search; abstracted a novel <em>advanced for-loop</em> construct
+                accepted at QTML 2025 (arXiv:2506.18260).
+              </li>
+              <li>
+                Designed an agentic search framework with modular tool-use,
+                prompt chaining, and self-evaluation loops; architected the
+                inference system; authored a quantum backpropagation formulation
+                (under review).
+              </li>
+              <li>
+                Formulating artificial consciousness via Integrated Information
+                Theory.
+              </li>
+              <li>
+                Co-organiser of the AI-for-Reasoning reading group; driving LLM
+                multi-token prediction on multi-hop reasoning and
+                suicidality-detection agent projects; DPO variant in progress.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="when">2021 – 2026</div>
+          <div>
+            <h3>Ph.D. Researcher — CS &amp; Medical Science</h3>
+            <div class="org">
+              University of Toronto · Thesis: Agentic system for exploration of
+              algorithmic ANNs
+            </div>
+            <ul>
+              <li>
+                Contributed to the generative quantum eigensolver (GQE)
+                (arXiv:2401.09253).
+              </li>
+              <li>
+                Engineered virtual brain stimulation AI; integrated E-field
+                modelling with connectome tractography for TMS target selection.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="when">2020 – 2023</div>
+          <div>
+            <h3>Teaching Assistant — Deep Learning</h3>
+            <div class="org">
+              Neuromatch Academy · Lead TA 2021, global cohort of 1,000+
+              students
+            </div>
+            <ul>
+              <li>
+                Delivered the deep learning curriculum (PyTorch); led debugging
+                sessions and model evaluation workshops across distributed
+                online cohorts.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="when">2019 – 2021</div>
+          <div>
+            <h3>Data Analyst</h3>
+            <div class="org">
+              Institute of Linguistics, Academia Sinica, Taiwan
+            </div>
+            <ul>
+              <li>
+                Designed and deployed multimodal neuroimaging pipelines
+                (MRI/fMRI/DTI/MEG) for a cross-age working-memory study; reduced
+                manual QC time by ~40% through automated topological analysis
+                scripts.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="when">2019</div>
+          <div>
+            <h3>Research Assistant — Medical AI</h3>
+            <div class="org">
+              Center for AI in Medicine, Taipei Medical University
+            </div>
+            <ul>
+              <li>
+                Delivered a CNN-based diagnostic model for idiopathic
+                normal-pressure hydrocephalus and brain-tumour segmentation;
+                published a CNN suicidality-prediction model (<em
+                  >J. Clinical Psychiatry</em
+                >, 82(2), 2021).
+              </li>
+              <li>
+                Built and documented an end-to-end data pipeline: DICOM
+                ingestion → preprocessing → model inference → clinical
+                reporting.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="when">2017</div>
+          <div>
+            <h3>Software Engineer</h3>
+            <div class="org">
+              Cybersecurity Technology Institute, Institute for Information
+              Industry, Taiwan
+            </div>
+            <ul>
+              <li>
+                Developed security tooling and data-processing scripts in
+                Python/C++ within an agile team; participated in code review and
+                issue-tracking workflows.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="when">2016 – 2017</div>
+          <div>
+            <h3>Visiting Student — Big Data &amp; ML Infrastructure</h3>
+            <div class="org">
+              Modeling &amp; Informatics Lab, National Taiwan University
+            </div>
+            <ul>
+              <li>
+                Provisioned and administrated a Hadoop/Spark CDH cluster for
+                large-scale neural image analysis (Thunder-project,
+                TensorflowOnSpark); aligned chatbot LU/NLG embeddings with brain
+                activity signals.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="when">2011 – 2013</div>
+          <div>
+            <h3>Clinical Psychologist</h3>
+            <div class="org">Taipei Veterans General Hospital</div>
+            <ul>
+              <li>
+                Psychiatry Department, Neurological Institute, and
+                Rehabilitation Center.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="card-list">
+          <div class="card">
+            <div class="top">
+              <span>Ph.D. Candidate, Institute of Medical Science</span
+              ><span class="when">2021 – 2026</span>
+            </div>
+            <div class="sub">University of Toronto, Canada</div>
+          </div>
+          <div class="card">
+            <div class="top">
+              <span>M.S., Clinical Psychology</span
+              ><span class="when">2009 – 2012</span>
+            </div>
+            <div class="sub">National Chung Cheng University, Taiwan</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills">
+          <div class="skill-row">
+            <span class="cat">ML / AI</span>
+            <span class="items"
+              >PyTorch, JAX, TensorFlow-Quantum, Scikit-learn, Hugging Face, LLM
+              fine-tuning &amp; agents, Multi-agent RL, LangChain, Qiskit,
+              PennyLane</span
+            >
+          </div>
+          <div class="skill-row">
+            <span class="cat">Stack</span>
+            <span class="items"
+              >Python, C/C++, Java, SQL, JavaScript/TypeScript, React, Next.js,
+              Django REST, Bash/Shell</span
+            >
+          </div>
+          <div class="skill-row">
+            <span class="cat">CI/CD</span>
+            <span class="items"
+              >Git, GitHub Actions, Docker, Docker Compose; CI pipelines for ML
+              model validation and automated test suites</span
+            >
+          </div>
+          <div class="skill-row">
+            <span class="cat">Infra / MLOps</span>
+            <span class="items"
+              >GCP, AWS (S3/EC2), Hadoop/Spark (CDH), TensorflowOnSpark, Linux
+              sysadmin, cluster provisioning &amp; job scheduling, vLLM,
+              Megatron, veRL</span
+            >
+          </div>
+          <div class="skill-row">
+            <span class="cat">Data</span>
+            <span class="items"
+              >NumPy, Pandas, SciPy; multimodal neuroimaging (fMRI/MRI/MEG/DTI);
+              topological &amp; dynamical systems analysis</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="awards">
+        <h2>Awards</h2>
+        <div class="card-list">
+          <div class="card">
+            <div class="top">
+              <span>Vector Institute Research Scholarship</span
+              ><span class="when">2024, 2025</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="top">
+              <span>Pixnet Hackathon: A.I. Image Generation — 2nd Prize</span
+              ><span class="when">2018</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="top">
+              <span>Pixnet Hackathon: A.I. Cloze — 1st Prize</span
+              ><span class="when">2016</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 Fu-Te Wong ·
+      <a href="mailto:zuxfoucault@gmail.com">zuxfoucault@gmail.com</a> ·
+      <a href="https://github.com/zuxfoucault" target="_blank" rel="noopener"
+        >GitHub</a
+      >
+    </footer>
+
+    <script>
+      const btn = document.getElementById("theme-toggle");
+      const root = document.documentElement;
+      const saved = localStorage.getItem("theme");
+      if (saved) root.dataset.theme = saved;
+      btn.addEventListener("click", () => {
+        const systemDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const current = root.dataset.theme || (systemDark ? "dark" : "light");
+        const next = current === "dark" ? "light" : "dark";
+        root.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+    </script>
+  </body>
+</html>
