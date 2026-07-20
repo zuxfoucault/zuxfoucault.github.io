@@ -151,6 +151,21 @@
       /* ── Hero ────────────────────────── */
       header.hero {
         padding: 4.5rem 0 1rem;
+        display: flex;
+        gap: 2.5rem;
+        align-items: flex-start;
+      }
+      .hero-text {
+        flex: 1;
+        min-width: 0;
+      }
+      .hero-portrait {
+        flex-shrink: 0;
+        width: 200px;
+        height: auto;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
       }
       .hero h1 {
         font-size: 2.5rem;
@@ -286,6 +301,14 @@
         .hero h1 {
           font-size: 2rem;
         }
+        header.hero {
+          flex-direction: column-reverse;
+          gap: 1.5rem;
+          padding-top: 3rem;
+        }
+        .hero-portrait {
+          width: 140px;
+        }
       }
 
       /* ── Skills ──────────────────────── */
@@ -375,6 +398,7 @@
 
     <main>
       <header class="hero">
+        <div class="hero-text">
         <h1>Fu-Te Wong</h1>
         <p class="role">
           Researcher,
@@ -410,6 +434,14 @@
           <span>Computational Neuroscience</span>
           <span>Integrated Information Theory</span>
         </div>
+        </div>
+        <img
+          class="hero-portrait"
+          src="portrait_web.jpg"
+          alt="Portrait of Fu-Te Wong"
+          width="480"
+          height="640"
+        />
       </header>
 
       <section id="publications">
